@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="title">
+        <h1 style="margin-top: 9px;">Books</h1>
+        <span>(5 Books)</span>
+    </div>
+    <div>
+        <button mat-button [matMenuTriggerFor]="menu" style="width: 150px; padding-top: 7px; border: 1px solid black;">
+            <h5 style="font-size: 13px;" >Sort by relevance</h5>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <span>Price: Low to High</span>
+            </button>
+            <button mat-menu-item>
+              <span>Price: High to Low</span>
+            </button>
+            <button mat-menu-item>
+              <span>Newest Arrivals</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>
+<div class="row">
+  <div *ngFor="let Book of ListofBooks" class="card">
+    <mat-card (click)="ViewBook(Book)" style="border-radius: 15px;">
+        <mat-card-header class="headers">
+          <mat-card-title><img class="image" src="{{Book.bookImg}}" alt=""></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h3 style="font-weight: 500;">{{Book.bookName}}</h3>
+            <div style="margin-top: -15px;"><span style="color: #878787;">{{Book.authorName}}</span></div>
+            <div class="ratings">
+              <div class="ratingbox">
+                <span>{{Book.rating}}</span>
+                <mat-icon style="font-size: 15px; align-content: center;">star</mat-icon>
+              </div>
+              <div style="color: #878787;">({{Book.noofRatings}})</div>
+            </div>
+            <div class="ratings">
+              <div style="font-weight: 500;">Rs.{{Book.discountPrice}}</div>
+              <div style="color: #878787;"><s>Rs.{{Book.mrp}}</s></div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+</div>

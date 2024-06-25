@@ -1,0 +1,103 @@
+<div class="container">
+    <mat-card appearance="outlined" class="card1">
+        <div style="border-radius: 34px;"><img class="image" src="../../assets/component.png"/></div>
+        <mat-card-content class="text1">ONLINE BOOK SHOPPING</mat-card-content>
+    </mat-card>
+    <mat-card appearance="outlined" class="card2">
+        <div *ngIf="display then Login else SignIn"></div>
+        <ng-template #Login>
+            <div class="header">
+                <div>
+                    <button mat-button (click)="display=true" class="text2">LOGIN</button>
+                </div>
+                <div>
+                    <button mat-button (click)="display=false" class="text2" style="color:rgb(135,135,135)!important;">SIGNUP</button>
+                </div>
+            </div>
+            <div class="Pointerline" style="margin-left: 73px;"></div>
+            <div style="margin-top: 5px;">
+               <form [formGroup]="LoginForm" (ngSubmit)="Onlogin()">
+                <div class="formItem">
+                    <div><label class="label">Email Id</label></div>
+                    <mat-form-field appearance="outline" class="input">
+                        <input matInput placeholder="Email or phone" formControlName="email">
+                    </mat-form-field>
+                </div>
+                <div class="formItem">
+                    <div><label class="label">Password</label></div>
+                    <div>
+                        <mat-form-field appearance="outline" class="input">
+                            <input matInput password type="password" placeholder="Password" formControlName="password">
+                        </mat-form-field>                        
+                    </div>
+                    <button class="forgot" mat-button>Forgot Password?</button>
+                </div>
+                <div class="formItem">
+                    <button class="button1" mat-button >Login</button>
+                </div>
+                <div class="or">
+                    <div class="line"></div>
+                    <div><span>OR</span></div>
+                    <div class="line"></div>
+                </div>
+                <div class="or">
+                    <div>
+                        <button mat-flat-button class="choose" style="background-color: #4266B2; color:aliceblue;">FaceBook</button>
+                    </div>
+                    <div>
+                        <button mat-flat-button class="choose" style="background-color: #F5F5F5;">Google</button>
+                    </div>
+                </div>
+               </form> 
+            </div>
+        </ng-template>
+        <ng-template #SignIn>
+            <div class="header">
+                <div>
+                    <button mat-button (click)="display=true" class="text2" style="color:rgb(135,135,135)!important;">LOGIN</button>
+                </div>
+                <div>
+                    <button mat-button (click)="display=false" class="text2">SIGNUP</button>
+                </div>
+            </div>
+            <div class="Pointerline" style="margin-left: 266px;"></div>
+            <div style="margin-top: 5px;">
+                <form [formGroup]="SignUpForm" (ngSubmit)="SignUp()">
+                 <div class="formItem">
+                     <div><label class="label">Full Name</label></div>
+                     <mat-form-field appearance="outline" class="input">
+                         <input matInput placeholder="Enter your Name" formControlName="fullName">
+                     </mat-form-field>
+                 </div>
+                 <div class="formItem" style="margin-top: -15px;">
+                     <div><label class="label">Email Id</label></div>
+                     <div>
+                         <mat-form-field appearance="outline" class="input">
+                             <input matInput placeholder="Email" formControlName="email">
+                         </mat-form-field>                        
+                     </div>
+                 </div>
+                 <div class="formItem" style="margin-top: -15px;">
+                    <div><label class="label">Password</label></div>
+                    <div>
+                        <mat-form-field appearance="outline" class="input">
+                            <input matInput type="password" placeholder="Password" formControlName="password">
+                        </mat-form-field>                        
+                    </div>
+                </div>
+                <div class="formItem" style="margin-top: -15px;">
+                    <div><label class="label">Mobile Number</label></div>
+                    <div>
+                        <mat-form-field appearance="outline" class="input">
+                            <input matInput placeholder="Phone Number" formControlName="mobileNumber">
+                        </mat-form-field>                        
+                    </div>
+                </div>
+                 <div class="formItem" style="margin-top: -5px;">
+                     <button class="button1" mat-button>Signup</button>
+                 </div>
+                </form> 
+             </div>
+        </ng-template>
+    </mat-card>
+</div>

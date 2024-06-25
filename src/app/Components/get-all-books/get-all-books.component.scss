@@ -1,0 +1,51 @@
+.container{
+    display: flex;
+    margin-top: 17px;
+    justify-content: space-around;
+    gap:460px;
+}
+.title{
+    display: flex;
+    gap: 5px;
+    width: 200px;
+    align-items: center;
+    justify-self: center;
+}
+.card{
+    width: 235px;
+    height: 275px;
+    margin-top: 20px;
+}
+.row{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 170px;
+  margin-right: 170px;
+}
+.headers{
+    height: 172px;
+    background-color:#F5F5F5;
+    align-items: center;
+    justify-content: center;
+}
+.image{
+    width: 105px;
+    height: 135px;
+}
+.ratings{
+    display: flex;
+    gap:5px;
+}
+.ratingbox{
+    background-color: #388E3C; 
+    color: #FFFFFF; 
+    width:40px; 
+    display: flex; 
+    justify-content: flex-start;
+    gap:5px; 
+    align-content: center; 
+    padding-left: 3px;
+}
