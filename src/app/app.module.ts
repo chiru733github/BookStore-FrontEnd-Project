@@ -17,13 +17,16 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import { GetAllBooksComponent } from './Components/get-all-books/get-all-books.component';
 import {MatIconModule} from '@angular/material/icon';
-
+import { GetBookComponent } from './Components/get-book/get-book.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashBoardComponent,
-    GetAllBooksComponent
+    GetAllBooksComponent,
+    GetBookComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,9 @@ import {MatIconModule} from '@angular/material/icon';
     HttpClientModule,
     MatToolbarModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [
     provideClientHydration(),

@@ -6,14 +6,21 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BookService {
-
   constructor(private http:HttpService) { }
-  getNotes(){
+  getAllBooks(){
     let head={
       headers: new HttpHeaders({
-        'content-type':'application/json',
+        'content-type':'application/json'
       })
     }
     return this.http.GetMethodreset(`https://localhost:7103/api/Book/GetAllBooks`,false,head);
+  }
+  getById(data:any){
+    let head={
+      headers: new HttpHeaders({
+        'Content-type':'application/json'
+      })
+    }
+    return this.http.GetMethodreset(`https://localhost:7103/api/Book/GetByBookId?id=`+data,false,head)
   }
 }

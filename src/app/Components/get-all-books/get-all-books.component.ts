@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../Services/book/book.service';
+import { Router } from '@angular/router';
+import { GetBookComponent } from '../get-book/get-book.component';
 
 @Component({
   selector: 'app-get-all-books',
@@ -8,17 +10,17 @@ import { BookService } from '../../Services/book/book.service';
 })
 export class GetAllBooksComponent implements OnInit{
   ListofBooks:any;
-  constructor(private book:BookService){}
+  constructor(private book:BookService,private router:Router){}
   ngOnInit(): void {
     this.GetAllBook();
   }
   GetAllBook(){
-    this.book.getNotes().subscribe((response:any)=>{
+    this.book.getAllBooks().subscribe((response:any)=>{
       console.log(response);
       this.ListofBooks=response;
     })
   }
-  ViewBook(Book:any){
-
+  viewBook(Book:any){
+    this.router.navigate(['dashboard/getBook',Book.bookId]);
   }
 }

@@ -15,10 +15,23 @@
         
         <div class="endItems">
             <div class="d1">
-                <button mat-button class="item">
+                <button mat-button class="item" [matMenuTriggerFor]="profile">
                     <img src="../../assets/person.svg" alt="">
                     <p style="font-size: 12px; color: #FFFFFF; margin-top:-10px;">Profile</p>
                 </button>
+                <mat-menu #profile="matMenu">
+                    <h4>Hello Chiru,</h4>
+                    <button mat-menu-item>
+                        <span>Profile</span>
+                    </button>
+                    <button mat-menu-item>
+                      <span>my order</span>
+                    </button>
+                    <button mat-menu-item>
+                      <span>Wish List</span>
+                    </button>
+                    <button mat-menu-item>Logout</button>
+                  </mat-menu>
             </div>
             <div class="d1">
                 <button mat-button class="item">
