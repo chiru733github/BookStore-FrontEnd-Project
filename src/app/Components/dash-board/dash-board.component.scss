@@ -55,6 +55,7 @@
     flex-direction: column;
     height: 54px;
     align-items: center;
+    row-gap: 10px;
     justify-content: flex-start;
 }
 .d1{
@@ -64,4 +65,17 @@
     flex-direction: column;
     align-items: center; 
     justify-content: center;
+}
+.cartvalue{
+    background-color: #FFFFFF;
+    color: #A03037;
+    font-size: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: -10px;
 }

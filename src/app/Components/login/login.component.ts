@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../Services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,12 @@ import { UserService } from '../../Services/user/user.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  display:boolean=false;
+  display:boolean=true;
   Login:any;
   SignIn:any;
   LoginForm!:FormGroup;
   SignUpForm!:FormGroup;
-  constructor(private user:UserService,private formBuilder:FormBuilder){}
+  constructor(private user:UserService,private formBuilder:FormBuilder, private route:Router){}
   ngOnInit(): void {
     this.LoginForm = this.formBuilder.group({
       email:[''],
@@ -34,6 +35,8 @@ export class LoginComponent implements OnInit {
     }
     this.user.Login(data).subscribe((response:any)=>{
       console.log(response);
+      localStorage.setItem('Token',response.data);
+      this.route.navigate(['/dashboard']);
     })
   }
   SignUp(){

@@ -1,0 +1,32 @@
+<div class="container" *ngIf="haveCart()">
+    <div class="title">
+        <h1 style="margin-top: 9px; color: lightgrey; font-size: 15px;">Home/</h1>
+        <span style="font-size: 18px;margin-top: -5px;">My cart</span>
+    </div>
+    <div class="card">
+        <div class="head">
+            <h2>My cart({{Listofcarts.length}})</h2>
+            <div class="locBox"><span>Use current location</span></div>
+        </div>
+        <div *ngFor="let cart of Listofcarts" class="cart">
+            <div><img style="width: 65px; height: 85px;" src="{{cart.bookImg}}" alt=""></div>
+            <div class="details">
+                <h3>{{cart.bookName}}</h3>
+                <h5 style="color: lightgray; margin-top: -15px;">by {{cart.authorName}}</h5>
+                <div style="display: flex; gap: 5px; margin-top: -10px;">
+                    <div style="font-weight: 500;">Rs.{{cart.discountPrice}}</div>
+                    <div style="color: #878787;"><s>Rs.{{cart.mrp}}</s></div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 10px; align-items: center; justify-content: center;">
+                    <button mat-icon-button class="circle">-</button>
+                    <div class="box">1</div>
+                    <button mat-icon-button class="circle">+</button>
+                    <button (click)="remove(cart.cartId)" mat-button style="font-size: 15px; margin-left: 12px;">Remove</button>
+                </div>
+            </div>
+            <div style=" display: flex; align-items: flex-end; justify-content: end; width: 100%;">
+                <button mat-button class="orderbtn">PLACE ORDER</button>
+            </div>
+        </div>
+    </div>
+</div>

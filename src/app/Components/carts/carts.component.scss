@@ -1,0 +1,62 @@
+.container{
+    margin-left: 170px;
+    margin-top: 7px;
+}
+.title{
+    display: flex;
+    gap: 5px;
+    width: 200px;
+    align-items: center;
+    justify-content: flex-start ;
+}
+.card{
+    width: 774px;
+    height: auto;
+    border: 1px solid #b0afaf;
+}
+.head{
+    display: flex;
+    margin: 10px 30px;
+    justify-content: space-between;
+}
+.locBox{
+    display: flex;
+    border: 1px solid lightgray;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    width: 275px;
+    height: 40px;
+}
+.cart{
+    display: flex;
+    margin-left: 40px;
+    margin-bottom: 30px;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+.circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    border: 1px solid lightgrey;
+}
+.box{
+    width: 50px;
+    height: 30px;
+    border: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.orderbtn{
+    direction: rtl;
+    margin-right: 25px; 
+    background-color: rgb(76, 76, 210); 
+    color: white;
+}

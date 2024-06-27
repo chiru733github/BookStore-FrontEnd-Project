@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../Services/book/book.service';
 import { Router } from '@angular/router';
-import { GetBookComponent } from '../get-book/get-book.component';
 
 @Component({
   selector: 'app-get-all-books',
@@ -21,6 +20,9 @@ export class GetAllBooksComponent implements OnInit{
     })
   }
   viewBook(Book:any){
-    this.router.navigate(['dashboard/getBook',Book.bookId]);
+    this.router.navigate(['dashboard/getBook',+Book.bookId]);
+  }
+  BooksPresented() : boolean{
+    return this.ListofBooks !== undefined;
   }
 }

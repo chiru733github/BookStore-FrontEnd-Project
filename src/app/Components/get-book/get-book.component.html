@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="hasBook()">
   <div class="title">
     <h1 style="margin-top: 9px; color: lightgrey; font-size: 15px;">Home/</h1>
     <span style="font-size: 18px;margin-top: -5px;">Book({{id}})</span>
@@ -13,7 +13,7 @@
           <mat-card-title><img class="image" src="{{bookObject.bookImg}}" alt=""></mat-card-title>
         </mat-card-header>
         <mat-card-content style="display: flex; justify-content: space-between;">
-            <div><button style="background-color: brown; color: white;" mat-flat-button>ADD TO BAG</button></div>
+            <div><button style="background-color: brown; color: white;" mat-flat-button (click)="AddToCart()">ADD TO BAG</button></div>
             <div><button style="background-color: #333333; color: white;" mat-flat-button><mat-icon>favorite</mat-icon>WISHLIST</button></div>
         </mat-card-content>
     </mat-card>
@@ -40,7 +40,7 @@
       <div style="width: 100%; height: auto; padding: 30px; background-color:#F5F5F5;">
         <h4>Overall rating</h4>
         <input type="textarea" style="width: 100%; height: 80px;" >
-        <button mat-button style="display: flex; justify-content: flex-end; background-color: rgb(76, 76, 241); color: white;">Submit</button>
+        <button mat-button style="display: flex; background-color: rgb(76, 76, 241); color: white;">Submit</button>
       </div>
     </div>
 </div>

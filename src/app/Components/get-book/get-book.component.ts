@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BookService } from '../../Services/book/book.service';
-import { response } from 'express';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from '../../Services/cart/cart.service';
 
 @Component({
   selector: 'app-get-book',
@@ -11,16 +11,31 @@ import { ActivatedRoute } from '@angular/router';
 export class GetBookComponent implements OnInit{
   bookObject:any;
   id:any;
-  constructor(private book:BookService,private route: ActivatedRoute){}
-  ngOnInit(): void {
-    this.id = +this.route.snapshot.params['bookId'];
-    this.GetBook(this.id);
+  constructor(private book:BookService,private route: ActivatedRoute,private router:Router,private cart:CartService)
+  { 
+    this.id = this.route.snapshot.params['bookId'];
   }
-  GetBook(id:any){
-    this.book.getById(id).subscribe((response:any)=>{
-      console.log(this.id);
+  ngOnInit(): void {
+    this.book.getById(this.id).subscribe((response:any)=>{
       console.log(response);
       this.bookObject=response.data;
     })
+  }
+  AddToCart(){
+    if(!localStorage.getItem('Token'))
+      {
+        this.router.navigate(['/loginandSignIn']);
+      }
+    else{
+    let data={
+      bookId:this.id
+    }
+    this.cart.AddCart(data).subscribe((response)=>{
+      console.log(response);
+    })
+  }
+  }
+  hasBook(): boolean{
+    return this.bookObject !== undefined;
   }
 }

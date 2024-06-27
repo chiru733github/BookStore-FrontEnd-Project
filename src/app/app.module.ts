@@ -20,13 +20,15 @@ import {MatIconModule} from '@angular/material/icon';
 import { GetBookComponent } from './Components/get-book/get-book.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
+import { CartsComponent } from './Components/carts/carts.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashBoardComponent,
     GetAllBooksComponent,
-    GetBookComponent
+    GetBookComponent,
+    CartsComponent
   ],
   imports: [
     BrowserModule,
