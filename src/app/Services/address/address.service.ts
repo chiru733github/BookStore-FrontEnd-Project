@@ -1,0 +1,25 @@
+import { Injectable } from '@angular/core';
+import { HttpService } from '../http/http.service';
+import { HttpHeaders } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AddressService {
+
+  token: any;
+
+  constructor(private http:HttpService) {
+    this.token=localStorage.getItem('Token');
+  }
+
+  AddAddress(data:any){
+    let head={
+      headers: new HttpHeaders({
+        'content-type':'application/json',
+        'Authorization':'Bearer '+this.token
+      })
+    }
+    return this.http.PostMethodreset('https://localhost:7103/api/Address/AddAddress', data, true, head);
+  }
+}

@@ -24,4 +24,7 @@ export class HttpService {
   PutMethod(reqUrl: string,payload:any, token:boolean=true,httpoptions: any={}){
     return this.http.put(reqUrl,payload,token && httpoptions);
   }
+  DeleteMethod(reqUrl: string,token:boolean=true,httpoptions: any={}){
+    return this.http.delete(reqUrl,token && httpoptions);
+  }
 }

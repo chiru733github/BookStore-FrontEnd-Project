@@ -21,6 +21,8 @@ import { GetBookComponent } from './Components/get-book/get-book.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CartsComponent } from './Components/carts/carts.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { OrderSuccessPageComponent } from './Components/order-success-page/order-success-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { CartsComponent } from './Components/carts/carts.component';
     DashBoardComponent,
     GetAllBooksComponent,
     GetBookComponent,
-    CartsComponent
+    CartsComponent,
+    OrderSuccessPageComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { CartsComponent } from './Components/carts/carts.component';
     MatMenuModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [
     provideClientHydration(),

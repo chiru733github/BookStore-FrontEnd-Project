@@ -16,6 +16,9 @@ export class GetBookComponent implements OnInit{
     this.id = this.route.snapshot.params['bookId'];
   }
   ngOnInit(): void {
+    this.getByBookId();
+  }
+  getByBookId(){
     this.book.getById(this.id).subscribe((response:any)=>{
       console.log(response);
       this.bookObject=response.data;

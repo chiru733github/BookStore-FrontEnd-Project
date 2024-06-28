@@ -5,7 +5,7 @@
     </div>
     <div class="card">
         <div class="head">
-            <h2>My cart({{Listofcarts.length}})</h2>
+            <h2>My cart({{count}})</h2>
             <div class="locBox"><span>Use current location</span></div>
         </div>
         <div *ngFor="let cart of Listofcarts" class="cart">
@@ -18,14 +18,99 @@
                     <div style="color: #878787;"><s>Rs.{{cart.mrp}}</s></div>
                 </div>
                 <div style="display: flex; gap: 10px; margin-top: 10px; align-items: center; justify-content: center;">
-                    <button mat-icon-button class="circle">-</button>
-                    <div class="box">1</div>
-                    <button mat-icon-button class="circle">+</button>
-                    <button (click)="remove(cart.cartId)" mat-button style="font-size: 15px; margin-left: 12px;">Remove</button>
+                    <button mat-icon-button class="circle" (click)="flags=false; updateQuantity(cart);" >-</button>
+                    <div class="box">{{cart.quantity}}</div>
+                    <button mat-icon-button class="circle" (click)="flags=true; updateQuantity(cart); ">+</button>
+                    <button (click)="remove(cart.cartId)" mat-button style="font-size: 15px; margin-left: 12px; ">Remove</button>
                 </div>
             </div>
             <div style=" display: flex; align-items: flex-end; justify-content: end; width: 100%;">
-                <button mat-button class="orderbtn">PLACE ORDER</button>
+                <button mat-button class="orderbtn" *ngIf="!address" (click)="address = true; checkout(cart);">PLACE ORDER</button>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <h2 *ngIf="!address" style="font-weight: 400; margin-left: 40px;">Address Details</h2>
+        <div *ngIf="address">
+            <div class="head">
+                <h2 style="font-weight: 400;">Customer Details</h2>
+                <button mat-flat-button style="border: 1px solid #A03037; border-radius: 2px; color: #A03037; font-size: 15px;">Add New Address</button>
+            </div>
+            <div class="form">
+                <form [formGroup]="AddressForm" (ngSubmit)="AddAddress()">
+                    <div class="first">
+                      <div class="formItem">
+                        <label>Full Name</label>
+                        <mat-form-field appearance="outline">
+                          <input matInput placeholder="Full Name" formControlName="fullName">
+                        </mat-form-field>
+                      </div>
+                      <div class="formItem1">
+                        <label>Mobile Number</label>
+                        <mat-form-field appearance="outline">
+                          <input matInput placeholder="Mobile Number" formControlName="mobileNumber">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; width:87%">
+                        <label>Address</label>
+                      <mat-form-field appearance="outline">
+                        <input matInput placeholder="Enter your Address..." formControlName="address">
+                      </mat-form-field>
+                    </div>
+                    <div class="first">
+                      <div class="formItem">
+                        <label>city/town</label>
+                        <mat-form-field appearance="outline">
+                          <input matInput placeholder="city" formControlName="city">
+                        </mat-form-field>
+                      </div>
+                      <div class="formItem1">
+                        <label>State</label>
+                        <mat-form-field appearance="outline">
+                          <input matInput placeholder="State" formControlName="state">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="formItem">
+                        <label>Type</label>
+                        <div class="radio">
+                            <div>
+                                <input type="radio" name="radio" value="home" formControlName="type">
+                                <span>Home</span>
+                            </div>
+                            <div>
+                                <input type="radio" name="radio" vlaue="work" formControlName="type">
+                                <span>Work</span>
+                            </div>
+                            <div>
+                                <input type="radio" name="radio" value="other" formControlName="type">
+                                <span>Other</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="continue">
+                        <button mat-flat-button *ngIf="!order" (click)="order=true; AddAddress();">CONTINUE</button>                
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    <div class="card">
+        <h2 style="margin:10px 0 0 40px; "> Order summary</h2>
+        <div *ngIf="order" class="cart">
+            <div><img style="width: 65px; height: 85px;" src="{{cartOrder.bookImg}}" alt=""></div>
+            <div class="details">
+                <h3>{{cartOrder.bookName}}</h3>
+                <h5 style="color: lightgray; margin-top: -15px;">by {{cartOrder.authorName}}</h5>
+                <div style="display: flex; gap: 5px; margin-top: -10px;">
+                    <div style="font-weight: 500;">Rs.{{cartOrder.discountPrice}}</div>
+                    <div style="color: #878787;"><s>Rs.{{cartOrder.mrp}}</s></div>
+                </div>
+            </div>
+            <div style=" display: flex; align-items: flex-end; justify-content: end; width: 100%;">
+                <button mat-button class="orderbtn" *ngIf="order" (click)="placeOrder();" >CHECKOUT</button>
             </div>
         </div>
     </div>

@@ -12,7 +12,8 @@
 .card{
     width: 774px;
     height: auto;
-    border: 1px solid #b0afaf;
+    border: 1px solid lightgray;
+    margin-bottom: 20px;
 }
 .head{
     display: flex;
@@ -58,5 +59,74 @@
     direction: rtl;
     margin-right: 25px; 
     background-color: rgb(76, 76, 210); 
+    color: white;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 40px;
+    align-items: center;
+}
+.first{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+
+}
+.imgg{
+    padding-right: 33px;
+    width: 65%;
+    height: 60%;
+}
+.text{
+    font-family: "Google Sans", roboto, "Noto Sans Myanmar UI", arial, sans-serif;
+}
+.hint{
+    margin-top: -13px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+}
+.formItem{
+    display: flex;
+    flex-direction: column;
+}
+.radio{
+    display:flex;
+    gap:60px;
+    margin-top:7px;
+
+}
+.radio input{
+    width:15px;
+    height:15px;
+    accent-color: brown;
+    margin-right: 5px;
+}
+.form{
+    width:512px;
+    height:auto;
+    display:flex;
+    flex-direction: column;
+    margin-left: 40px;
+    margin-bottom: 30px;
+}
+.formItem1{
+    display: flex;
+    flex-direction: column;
+    margin-left:20px;
+}
+.continue{
+    display: flex;
+    width:100%;
+    margin-left: 570px;
+    margin-bottom: 10px;
+}
+.continue button{
+    width: 172px;
+    background-color: rgb(68, 68, 219);
     color: white;
 }

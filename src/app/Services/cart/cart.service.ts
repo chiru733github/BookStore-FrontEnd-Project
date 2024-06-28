@@ -36,4 +36,22 @@ export class CartService {
     }
     return this.http.GetMethod(`https://localhost:7103/api/Cart/NoofCartCountByUserId`,true,head);
   }
+  updateQuantity(data:any){
+    let head={
+      headers:new HttpHeaders({
+        'content-type':'application/json',
+        'Authorization':'Bearer '+this.token
+      })
+    }
+    return this.http.PutMethod(`https://localhost:7103/api/Cart/UpdateQuantity`,data,true,head);
+  }
+  removeCart(data:any){
+    let head={
+      headers:new HttpHeaders({
+        'content-type':'application/json',
+        'Authorization':'Bearer '+this.token
+      })
+    }
+    return this.http.DeleteMethod(`https://localhost:7103/api/Cart/RemoveBookFromCart?cartId=`+data,true,head);
+  }
 }
