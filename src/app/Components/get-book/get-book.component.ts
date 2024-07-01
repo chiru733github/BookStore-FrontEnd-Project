@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BookService } from '../../Services/book/book.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../Services/cart/cart.service';
+import { WishListService } from '../../Services/wishList/wish-list.service';
 
 @Component({
   selector: 'app-get-book',
@@ -11,7 +12,10 @@ import { CartService } from '../../Services/cart/cart.service';
 export class GetBookComponent implements OnInit{
   bookObject:any;
   id:any;
-  constructor(private book:BookService,private route: ActivatedRoute,private router:Router,private cart:CartService)
+  constructor(private book:BookService,
+              private route: ActivatedRoute,
+              private router:Router,
+              private cart:CartService,private wish:WishListService)
   { 
     this.id = this.route.snapshot.params['bookId'];
   }
@@ -40,5 +44,20 @@ export class GetBookComponent implements OnInit{
   }
   hasBook(): boolean{
     return this.bookObject !== undefined;
+  }
+  AddToWishList(){
+    if(!localStorage.getItem('Token'))
+      {
+        this.router.navigate(['/loginandSignIn']);
+        return 'login';
+      }
+    else{
+    let data={
+      bookId:this.id
+    }
+    return this.wish.AddWishList(data).subscribe((response:any)=>{
+      console.log(response);
+    })
+    }
   }
 }

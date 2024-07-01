@@ -20,9 +20,12 @@ import {MatIconModule} from '@angular/material/icon';
 import { GetBookComponent } from './Components/get-book/get-book.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatRadioModule} from '@angular/material/radio';
 import { CartsComponent } from './Components/carts/carts.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { OrderSuccessPageComponent } from './Components/order-success-page/order-success-page.component';
+import { ViewAllOrdersComponent } from './Components/view-all-orders/view-all-orders.component';
+import { WishListComponent } from './Components/wish-list/wish-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,9 @@ import { OrderSuccessPageComponent } from './Components/order-success-page/order
     GetAllBooksComponent,
     GetBookComponent,
     CartsComponent,
-    OrderSuccessPageComponent
+    OrderSuccessPageComponent,
+    ViewAllOrdersComponent,
+    WishListComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,7 @@ import { OrderSuccessPageComponent } from './Components/order-success-page/order
     MatIconModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,MatRadioModule
   ],
   providers: [
     provideClientHydration(),

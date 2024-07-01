@@ -22,4 +22,13 @@ export class OrderService {
     }
     return this.http.PostMethodreset('https://localhost:7103/api/Orders/AddOrder', data, true, head);
   }
+  GetAllOrdersById(){
+    let head={
+      headers: new HttpHeaders({
+        'content-type':'application/json',
+        'Authorization':'Bearer '+this.token
+      })
+    }
+    return this.http.GetMethod('https://localhost:7103/api/Orders/GetAllOrdersByUserId', true, head);
+  }
 }

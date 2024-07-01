@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../Services/cart/cart.service';
 import { response } from 'express';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dash-board',
@@ -9,7 +10,7 @@ import { response } from 'express';
 })
 export class DashBoardComponent implements OnInit {
   countCart:any;
-  constructor(private cart:CartService){}
+  constructor(private cart:CartService,private route:Router){}
   ngOnInit(): void {
     this.NoOfCarts();
   }
@@ -22,5 +23,12 @@ export class DashBoardComponent implements OnInit {
   searchingBook($event:any){}
   countpresent(){
     return this.countCart>=1;
+  }
+  logOut(){
+    localStorage.clear();
+    this.route.navigate(['/loginandSignIn']);
+  }
+  gotoHome(){
+    this.route.navigateByUrl('/dashboard');
   }
 }

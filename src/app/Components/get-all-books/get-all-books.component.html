@@ -31,8 +31,8 @@
             <div style="margin-top: -15px;"><span style="color: #878787;">by {{Book.authorName}}</span></div>
             <div class="ratings">
               <div class="ratingbox">
-                <span>{{Book.rating}}</span>
-                <mat-icon style="font-size: 15px; align-content: center;">star</mat-icon>
+                <span>{{Book.rating.toFixed(1)}}</span>
+                <mat-icon style="font-size: 15px; align-content: center; margin-top: -2px; margin-left: -2px;">star</mat-icon>
               </div>
               <div style="color: #878787;">({{Book.noofRatings}})</div>
             </div>

@@ -1,7 +1,7 @@
 <mat-toolbar class="nav">
     <mat-toolbar-row class="rowitems">
         <div class="main">
-            <div class="div1">
+            <div class="div1" (click)="gotoHome()">
                 <div><img src="../../assets/education.svg" alt=""></div>
                 <h1>BookStore</h1>
             </div>
@@ -12,7 +12,6 @@
                 <input type="text" placeholder="Search" (keyup)="searchingBook($event)"/>
               </div>
         </div>
-        
         <div class="endItems">
             <div class="d1">
                 <button mat-button class="item" [matMenuTriggerFor]="profile">
@@ -24,13 +23,13 @@
                     <button mat-menu-item>
                         <span>Profile</span>
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item routerLink="/dashboard/ViewOrders">
                       <span>my order</span>
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item routerLink="/dashboard/ViewWishList">
                       <span>Wish List</span>
                     </button>
-                    <button mat-menu-item>Logout</button>
+                    <button mat-menu-item (click)="logOut()">Logout</button>
                   </mat-menu>
             </div>
             <div class="d1">

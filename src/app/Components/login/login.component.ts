@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
     this.user.Login(data).subscribe((response:any)=>{
       console.log(response);
       localStorage.setItem('Token',response.data);
-      this.route.navigate(['/dashboard']);
     })
+    this.route.navigate(['/dashboard']);
   }
   SignUp(){
     let data={
@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
     }
     this.user.register(data).subscribe((response:any)=>{
       console.log(response);
-      localStorage.setItem("token",response.data);
     })
   }
 }

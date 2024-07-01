@@ -1,12 +1,12 @@
-<div class="container" *ngIf="haveCart()">
+<div class="container" >
     <div class="title">
-        <h1 style="margin-top: 9px; color: lightgrey; font-size: 15px;">Home/</h1>
+        <h1 class="home" routerLink="/dashboard/books">Home/</h1>
         <span style="font-size: 18px;margin-top: -5px;">My cart</span>
     </div>
-    <div class="card">
+    <div class="card" *ngIf="haveCart()" >
         <div class="head">
             <h2>My cart({{count}})</h2>
-            <div class="locBox"><span>Use current location</span></div>
+            <div class="locBox"><mat-icon style="color:brown;">pin_drop</mat-icon> <span>Use current location</span></div>
         </div>
         <div *ngFor="let cart of Listofcarts" class="cart">
             <div><img style="width: 65px; height: 85px;" src="{{cart.bookImg}}" alt=""></div>
@@ -30,8 +30,8 @@
         </div>
     </div>
     <div class="card">
-        <h2 *ngIf="!address" style="font-weight: 400; margin-left: 40px;">Address Details</h2>
-        <div *ngIf="address">
+        <h2 *ngIf="!address" style="font-weight: 400; margin-left: 40px; margin-top: 12px;">Address Details</h2>
+        <div *ngIf="address" >
             <div class="head">
                 <h2 style="font-weight: 400;">Customer Details</h2>
                 <button mat-flat-button style="border: 1px solid #A03037; border-radius: 2px; color: #A03037; font-size: 15px;">Add New Address</button>
@@ -54,9 +54,9 @@
                     </div>
                     <div style="display: flex; flex-direction: column; width:87%">
                         <label>Address</label>
-                      <mat-form-field appearance="outline">
-                        <input matInput placeholder="Enter your Address..." formControlName="address">
-                      </mat-form-field>
+                        <mat-form-field appearance="outline">
+                          <textarea matInput placeholder="Enter your Address"></textarea>
+                        </mat-form-field>
                     </div>
                     <div class="first">
                       <div class="formItem">
@@ -74,31 +74,21 @@
                     </div>
                     <div class="formItem">
                         <label>Type</label>
-                        <div class="radio">
-                            <div>
-                                <input type="radio" name="radio" value="home" formControlName="type">
-                                <span>Home</span>
-                            </div>
-                            <div>
-                                <input type="radio" name="radio" vlaue="work" formControlName="type">
-                                <span>Work</span>
-                            </div>
-                            <div>
-                                <input type="radio" name="radio" value="other" formControlName="type">
-                                <span>Other</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="continue">
-                        <button mat-flat-button *ngIf="!order" (click)="order=true; AddAddress();">CONTINUE</button>                
+                        <mat-radio-group formControlName="type" [formControl]="floatLabelControl" style="display: flex; gap: 50px;">
+                            <mat-radio-button value="Home">Home</mat-radio-button>
+                            <mat-radio-button value="Work">Work</mat-radio-button>
+                            <mat-radio-button value="Others">Others</mat-radio-button>
+                        </mat-radio-group>
                     </div>
                 </form>
             </div>
-            
+            <div class="continue">
+                <button mat-flat-button *ngIf="!order" (click)="order=true; AddAddress();">CONTINUE</button>                
+            </div>
         </div>
     </div>
     <div class="card">
-        <h2 style="margin:10px 0 0 40px; "> Order summary</h2>
+        <h2 style="font-weight: 400; margin-left: 40px; margin-top: 12px;">Order Summary</h2>
         <div *ngIf="order" class="cart">
             <div><img style="width: 65px; height: 85px;" src="{{cartOrder.bookImg}}" alt=""></div>
             <div class="details">
@@ -115,3 +105,6 @@
         </div>
     </div>
 </div>
+<footer class="footer">
+  <span style="margin-left: 170px;">Copyright &copy; 2020, Bookstore Private Limited. All Rights Reserved.</span>
+</footer>

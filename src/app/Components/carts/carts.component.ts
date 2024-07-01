@@ -1,32 +1,34 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, Optional, signal } from '@angular/core';
 import { CartService } from '../../Services/cart/cart.service';
-import { response } from 'express';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AddressService } from '../../Services/address/address.service';
 import { OrderService } from '../../Services/order/order.service';
+import { FloatLabelType } from '@angular/material/form-field';
+import { Router } from '@angular/router';
+import { animate, query, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-carts',
   templateUrl: './carts.component.html',
-  styleUrl: './carts.component.scss'
+  styleUrl: './carts.component.scss',
 })
 export class CartsComponent implements OnInit{
   
   Listofcarts:any;
   AddressForm!:FormGroup;
+  readonly floatLabelControl = new FormControl('Home' as FloatLabelType);
   flags:boolean=true;
   count:any;
   address:boolean=false;
   order:boolean=false;
   cartOrder:any;
   addressId:any;
-
   constructor(
     private cart:CartService,
     private formbuilder:FormBuilder,
     private addressService:AddressService,
-    private orderService:OrderService
+    private orderService:OrderService,
+    private route:Router
   ){}
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class CartsComponent implements OnInit{
       address:[''],
       city:[''],
       state:[''],
-      type:['']
+      type:this.floatLabelControl
     });
   }
   
@@ -55,7 +57,6 @@ export class CartsComponent implements OnInit{
     return this.Listofcarts !== undefined;
   }
   updateQuantity(cart:any){
-    
     let data={
       cartId:cart.cartId,
       quantity:this.flags?(cart.quantity+1):(cart.quantity-1)
@@ -65,7 +66,7 @@ export class CartsComponent implements OnInit{
       console.log(response);
       this.getCartById();
     })
-  }
+    }
   }
   remove(id:any){
     this.cart.removeCart(id).subscribe((response:any)=>{
@@ -98,6 +99,7 @@ export class CartsComponent implements OnInit{
     }
     this.orderService.PlaceOrder(data).subscribe((response:any)=>{
       console.log(response);
+      this.route.navigate(['/dashboard/orderSuccess']);
     })
   }
 }

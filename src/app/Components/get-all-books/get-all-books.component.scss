@@ -3,6 +3,7 @@
     margin-top: 17px;
     justify-content: space-around;
     gap:460px;
+    position: relative;
 }
 .title{
     display: flex;
@@ -14,7 +15,7 @@
 .card{
     width: 235px;
     height: 275px;
-    margin-top: 20px;
+    margin: 10px 0px;
 }
 mat-card{
     border-radius: 5px!important;
@@ -57,10 +58,13 @@ mat-card:hover{
     padding-left: 3px;
 }
 .footer{
-    margin-top: 30px;
+    position:static;
+    bottom:0;
+    width:100%;
+    margin-top: 40px;
+    height:50px;   /* Height of the footer */
     background-color: black;
-    color: white;
     display: flex;
     align-items: center;
-    height: 50px;
+    color: white;
 }
