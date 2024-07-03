@@ -6,8 +6,8 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private httpservice:HttpService) { }
+  token:any
+  constructor(private httpservice:HttpService) { this.token=localStorage.getItem('Token'); }
 
   Login(data: any){
     let header={
@@ -25,5 +25,23 @@ export class UserService {
       })
     }
     return this.httpservice.PostMethod(`https://localhost:7103/api/Users/SignIn`,data,false,header);
+  }
+  GetById(){
+    let head={
+      headers: new HttpHeaders({
+        'content-type':'application/json',
+        'Authorization':'Bearer '+this.token
+      })
+    }
+    return this.httpservice.GetMethod(`https://localhost:7103/api/Users/FetchById`,true,head);
+  }
+  UpdateProfile(data:any){
+    let head={
+      headers: new HttpHeaders({
+        'content-type':'application/json',
+        'Authorization':'Bearer '+this.token
+      })
+    }
+    return this.httpservice.PutMethod(`https://localhost:7103/api/Users/UpdateDetails`,data,true,head);
   }
 }

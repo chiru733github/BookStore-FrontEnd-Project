@@ -26,6 +26,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { OrderSuccessPageComponent } from './Components/order-success-page/order-success-page.component';
 import { ViewAllOrdersComponent } from './Components/view-all-orders/view-all-orders.component';
 import { WishListComponent } from './Components/wish-list/wish-list.component';
+import { ProfileComponent } from './Components/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { WishListComponent } from './Components/wish-list/wish-list.component';
     CartsComponent,
     OrderSuccessPageComponent,
     ViewAllOrdersComponent,
-    WishListComponent
+    WishListComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { CartsComponent } from './Components/carts/carts.component';
 import { ViewAllOrdersComponent } from './Components/view-all-orders/view-all-orders.component';
 import { OrderSuccessPageComponent } from './Components/order-success-page/order-success-page.component';
 import { WishListComponent } from './Components/wish-list/wish-list.component';
+import { ProfileComponent } from './Components/profile/profile.component';
 
 const routes: Routes = [
   {path:'loginandSignIn',component:LoginComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
       {path:'ViewCart',component:CartsComponent,canActivate:[authGuard]},
       {path:'ViewOrders',component:ViewAllOrdersComponent},
       {path:'orderSuccess',component:OrderSuccessPageComponent},
-      {path:'ViewWishList',component:WishListComponent}
+      {path:'ViewWishList',component:WishListComponent},
+      {path:'Profile',component:ProfileComponent}
     ]
   }
 ];

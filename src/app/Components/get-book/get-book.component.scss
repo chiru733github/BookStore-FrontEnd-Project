@@ -51,3 +51,18 @@ mat-card{
     align-content: center; 
     padding-left: 3px;
 }
+.stars{
+    display: flex;
+    font-size: 26px;
+    padding-bottom: 10px;
+    gap: 10px;
+  }
+  .filled {
+    cursor: pointer;
+    color: gold;
+  }
+
+.Username{
+    font-size: 20px;
+    font-weight: 400;
+}

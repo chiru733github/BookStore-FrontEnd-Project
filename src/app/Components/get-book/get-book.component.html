@@ -37,11 +37,29 @@
       </li></ul>
       <hr>
       <div style="margin-top: 10px;"><h3>Customer FeedBack</h3></div>
-      <div style="width: 100%; height: auto; padding: 30px; background-color:#F5F5F5;">
+      <div style="width: 100%; height: auto; padding: 30px; background-color:#F5F5F5;" class="rating">
         <h4>Overall rating</h4>
-        <input type="textarea" style="width: 100%; height: 80px;" >
-        <button mat-button style="display: flex; background-color: rgb(76, 76, 241); color: white;">Submit</button>
+        <div class="stars">
+          <span class="filled" *ngFor="let star of [1, 2, 3, 4, 5]" (click)="rating = star"
+            [innerHTML]="star <= rating ? '&#9733;' : '&#9734;'">
+          </span>
+        </div>
+        <textarea style="width: 100%;" rows="5" [(ngModel)]="comment"></textarea>
+        <div style="display: flex; justify-content: end;">
+          <button mat-button style="display: flex; background-color: rgb(76, 76, 241); color: white;" (click)="AddFeedBack()">Submit</button>
+        </div>
       </div>
+      <div *ngIf="haveFeedbacks()">
+        <div *ngFor="let feedback of ListofFeedbacks">
+          <div style="display: flex; gap:20px;">
+            <span style="width:20px; height: 20px; text-align:center;border-radius: 50%; border: 1px solid black;">C</span>
+            <span class="Username">{{ feedback.userName }}</span>
+          </div>
+        <div class="ratingstars">
+            <span *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'filled': star <= feedback.rating}"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg></span>
+        </div>
+        <p class="comment">{{ feedback.comment }}</p>
+    </div>
     </div>
 </div>
 </div>
